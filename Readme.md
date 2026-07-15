@@ -97,8 +97,6 @@
         - [실행 결과](#실행-결과-4)
     - [코드 설명](#코드-설명-16)
     - [3.5.5 역전파에서의 손실 함수 활용](#355-역전파에서의-손실-함수-활용)
-- [\\frac{\\partial L}{\\partial \\hat{y}}](#fracpartial-lpartial-haty)
-- [\\delta](#delta)
     - [3.5 정리](#35-정리)
 - [3.6 역전파(Back Propagation) 구현](#36-역전파back-propagation-구현)
     - [3.6.1 구현 목표](#361-구현-목표)
@@ -106,7 +104,6 @@
         - [Activation.kt](#activationkt-4)
         - [코드 설명](#코드-설명-17)
     - [3.6.3 손실 함수의 Gradient 계산](#363-손실-함수의-gradient-계산)
-- [\\frac{\\partial L}{\\partial \\hat y}](#fracpartial-lpartial-hat-y)
     - [Loss.kt](#losskt-1)
     - [코드 설명](#코드-설명-18)
     - [3.6.4 Dense Layer 역전파 구현](#364-dense-layer-역전파-구현)
@@ -1632,10 +1629,7 @@ Sigmoid는 출력값을 이용하여 미분을 계산할 수 있으므로 계산
 평균 제곱 오차(MSE)의 Gradient는 다음과 같다.
 
 $$
-\frac{\partial L}{\partial \hat y}
-=
-\frac{2}{n}
-(\hat y-y)
+\frac{\partial L}{\partial \hat y}=\frac{2}{n}(\hat y-y)
 $$
 
 ### Loss.kt
