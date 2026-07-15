@@ -1517,17 +1517,13 @@ fun main(){
 MSE의 미분은 다음과 같다.
 
 $$
-\frac{\partial L}{\partial \hat{y}}
-=
-\frac{2}{n}(\hat{y}-y)
+\frac{\partial L}{\partial \hat{y}}=\frac{2}{n}(\hat{y}-y)
 $$
 
 이를 이용하여 출력층의 오차를 계산한다.
 
 $$
-\delta
-=
-(\hat{y}-y)\odot f'(z)
+\delta=(\hat{y}-y)\odot f'(z)
 $$
 
 여기서
