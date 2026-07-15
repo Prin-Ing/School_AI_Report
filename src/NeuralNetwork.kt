@@ -1,25 +1,31 @@
 class NeuralNetwork {
 
     private val hiddenLayer =
-        DenseLayer(2, 4)
+        DenseLayer(
+            2, 4,
+            Activation::relu,
+            Activation::reluDerivative
+        )
 
     private val outputLayer =
-        DenseLayer(4, 1)
+        DenseLayer(
+            4, 1,
+            Activation::sigmoid,
+            Activation::sigmoidDerivative
+        )
 
+    // 여러 층을 순서대로 다루기 위한 리스트
     private val layers = listOf(hiddenLayer, outputLayer)
 
     fun forward(input: Matrix): Matrix {
 
-        val hiddenOutput =
-            hiddenLayer.forward(
-                input,
-                Activation::relu
-            )
+        var output = input
 
-        return outputLayer.forward(
-            hiddenOutput,
-            Activation::sigmoid
-        )
+        for (layer in layers) {
+            output = layer.forward(output)
+        }
+
+        return output
 
     }
 

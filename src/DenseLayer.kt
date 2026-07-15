@@ -1,6 +1,8 @@
 class DenseLayer(
     inputSize: Int,
-    outputSize: Int
+    outputSize: Int,
+    private val activation: (Double) -> Double,
+    private val activationDerivative: (Double) -> Double
 ) {
 
     // 가중치
@@ -9,15 +11,12 @@ class DenseLayer(
     // 편향
     var bias = Matrix.random(1, outputSize)
 
-    // 순전파에서 저장할 값
+    // 역전파에서 사용할 값
     lateinit var input: Matrix
     lateinit var z: Matrix
     lateinit var output: Matrix
 
-    fun forward(
-        input: Matrix,
-        activation: (Double) -> Double
-    ): Matrix {
+    fun forward(input: Matrix): Matrix {
 
         this.input = input
 
@@ -35,9 +34,7 @@ class DenseLayer(
     ): Matrix {
 
         val activationGradient =
-            output.map {
-                Activation.sigmoidDerivative(it)
-            }
+            z.map(activationDerivative)
 
         val delta = gradient.hadamard(activationGradient)
 

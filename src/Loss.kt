@@ -31,7 +31,9 @@ object Loss {
         target: Matrix
     ): Matrix {
 
-        return (predicted - target) * (2.0 / predicted.rows)
+        val n = predicted.rows * predicted.cols
+
+        return (predicted - target) * (2.0 / n)
 
     }
 

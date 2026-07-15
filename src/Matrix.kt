@@ -169,18 +169,12 @@ class Matrix(
 
         val sb = StringBuilder()
 
-        for(row in 0 until rows){
-
-            for(col in 0 until cols){
-
-                sb.append(data[row][col])
-
-                if(col < cols - 1) sb.append("\t")
-
+        for (row in 0 until rows) {
+            for (col in 0 until cols) {
+                sb.append(this[row, col])
+                if (col != cols - 1) sb.append(" ")
             }
-
             sb.append("\n")
-
         }
 
         return sb.toString()
